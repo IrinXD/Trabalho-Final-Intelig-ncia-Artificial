@@ -1,6 +1,6 @@
 Disciplina de Inteligência Artificial - Professor Munif - Unicesumar 2026
 
-## Integrantes
+## 1. Identificação da Equipe
 - Gabriel Andrade Garcia  - RA:23271855-2
 - Thiago Nunes de Souza - RA: 23000383-2
 - Pedro Antônio Paiva - RA: 26010619-2
@@ -33,7 +33,7 @@ Utilizamos a função `.corr()` da biblioteca Pandas para calcular o **Coeficien
 
 Através desta análise estatística, comprovamos a nossa hipótese inicial: as variáveis de tempo de treino e batimentos cardíacos médios apresentaram a correlação positiva mais forte (valores mais próximos de 1) com a nossa Variável Alvo.
 
-> **[INSERIR IMAGEM DO MAPA DE CALOR AQUI]**
+> <img width="1074" height="722" alt="image" src="https://github.com/user-attachments/assets/b89c746f-103a-474f-b053-a6b7a1e3c857" />
 
 ### Tratamento de Dados e Normalização
 - **Tradução de Texto para Número (Dummy Encoding):** O comando `pd.get_dummies` foi utilizado para transformar variáveis categóricas (como Gênero e Tipo de Treino) em colunas binárias ("Sim ou Não").
@@ -60,14 +60,14 @@ Para a etapa avançada, aplicamos a variação do SVM para valores contínuos (S
 
 ## 5. Avaliação dos Modelos e Comparação dos Resultados
 
-Como o nosso objetivo é descobrir um gasto calórico exato, caracterizando um problema de **Regressão**, o uso do F1-Score não é matematicamente aplicável. Por isso, a nossa avaliação foi ancorada no **MAE (Erro Absoluto Médio)** e no **R² (Acurácia de ajuste)**.
+Como o nosso objetivo é descobrir um gasto calórico exato, caracterizando um problema de **Regressão**, a nossa avaliação foi ancorada no **MAE (Erro Absoluto Médio)** e no **R² (Acurácia de ajuste)**.
 
-> **[INSERIR IMAGEM DO GRÁFICO FINAL DE BARRAS AGRUPADAS DOS 3 LOTES AQUI]**
+> <img width="997" height="599" alt="image" src="https://github.com/user-attachments/assets/8d2704a1-5ec1-4686-9ffd-b0d39321ee0e" />
 
 ### Análise Comparativa por Lote:
 1. **Sobre o Lote 1 (O Empate Técnico):** Onde usamos apenas 2 variáveis (Tempo e BPM), houve um empate técnico. Em um cenário de baixa complexidade, o cálculo de distância do K-NN funciona super bem.
 2. **Sobre o Lote 2 (A Virada do SVM):** Adicionando as características corporais, o erro caiu em ambos. Porém, o SVM já começou a se distanciar, derrubando a margem de erro. O hiperplano matemático se ajustou melhor aos dados físicos.
-3. **Sobre o Lote 3 (A Maldição da Dimensionalidade):** O grande destaque do trabalho. Ao introduzir todas as variáveis simultaneamente, o K-NN colapsou. O erro disparou devido à Maldição da Dimensionalidade. Em contrapartida, o SVR com Kernel Linear manteve-se totalmente estável, ignorou o ruído das colunas desnecessárias e manteve um erro baixíssimo de cerca de 38 calorias.
+3. **Sobre o Lote 3 (A Maldição da Dimensionalidade):** Ao introduzir todas as variáveis simultaneamente, o K-NN colapsou. O erro disparou devido à Maldição da Dimensionalidade. Em contrapartida, o SVR com Kernel Linear manteve-se totalmente estável, ignorou o ruído das colunas desnecessárias e manteve um erro baixíssimo de cerca de 38 calorias.
 
 ---
 

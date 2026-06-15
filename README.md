@@ -31,7 +31,7 @@ Antes de treinar os modelos de Inteligência Artificial, realizamos um Estudo de
 
 Utilizamos a função `.corr()` da biblioteca Pandas para calcular o **Coeficiente de Correlação de Pearson** entre todas as variáveis numéricas. Os resultados foram plotados em um Mapa de Calor (Heatmap).
 
-Através desta análise estatística, comprovamos a nossa hipótese inicial: as variáveis de tempo de treino e batimentos cardíacos médios apresentaram a correlação positiva mais forte (valores mais próximos de 1) com a nossa Variável Alvo.
+Através desta análise estatística, nossa hipótese inicial foi parcialmente refutada. Embora a duração do treino tenha de fato apresentado a maior correlação com as calorias (0.91) , descobrimos que o Nível de Experiência (Experience_Level) possui um impacto muito maior (0.69) do que os Batimentos Cardíacos Médios (apenas 0.34). Essa descoberta guiou a reestruturação inteligente dos nossos lotes de teste.
 
 > <img width="1074" height="722" alt="image" src="https://github.com/user-attachments/assets/b89c746f-103a-474f-b053-a6b7a1e3c857" />
 
@@ -42,9 +42,14 @@ Através desta análise estatística, comprovamos a nossa hipótese inicial: as 
 
 ### Criação dos Lotes de Teste
 Para um teste científico estruturado, dividimos as variáveis em 3 lotes de complexidade crescente:
-1. **Lote 1 (O básico do esforço):** Apenas Tempo de treino e Batimentos Cardíacos.
-2. **Lote 2 (Esforço + Corpo):** Lote 1 somado a Peso, Idade, Gênero e % de Gordura.
-3. **Lote 3 (Tudo junto):** Todas as colunas possíveis da tabela simultaneamente.
+
+**Lote 1 (A Hipótese Inicial):** Apenas Tempo de treino e Batimentos Cardíacos (Avg_BPM).
+
+**Lote 2 (A Correção pelos Dados):** Tempo de treino e Nível de Experiência (Experience_Level). Queremos provar que a IA performa melhor quando ouve a estatística.
+
+**Lote 3 (Esforço + Corpo):** O Lote 2 somado às características corporais e fisiológicas (BPM, Peso, Idade, Gênero e % de Gordura).
+
+**Lote 4 (Tudo junto):** Todas as colunas possíveis da tabela simultaneamente (para forçar a Maldição da Dimensionalidade no K-NN).
 
 ---
 

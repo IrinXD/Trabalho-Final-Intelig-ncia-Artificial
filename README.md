@@ -67,14 +67,19 @@ Para a etapa avançada, aplicamos a variação do SVM para valores contínuos (S
 
 Como o nosso objetivo é descobrir um gasto calórico exato, caracterizando um problema de **Regressão**, a nossa avaliação foi ancorada no **MAE (Erro Absoluto Médio)** e no **R² (Acurácia de ajuste)**.
 
-> <img width="997" height="599" alt="image" src="https://github.com/user-attachments/assets/8d2704a1-5ec1-4686-9ffd-b0d39321ee0e" />
+> <img width="861" height="430" alt="image" src="https://github.com/user-attachments/assets/b939dfac-289f-4258-a620-b9091773c5d4" />
 
-### Análise Comparativa por Lote:
-1. **Sobre o Lote 1 (O Empate Técnico):** Onde usamos apenas 2 variáveis (Tempo e BPM), houve um empate técnico. Em um cenário de baixa complexidade, o cálculo de distância do K-NN funciona super bem.
-2. **Sobre o Lote 2 (A Virada do SVM):** Adicionando as características corporais, o erro caiu em ambos. Porém, o SVM já começou a se distanciar, derrubando a margem de erro. O hiperplano matemático se ajustou melhor aos dados físicos.
-3. **Sobre o Lote 3 (A Maldição da Dimensionalidade):** Ao introduzir todas as variáveis simultaneamente, o K-NN colapsou. O erro disparou devido à Maldição da Dimensionalidade. Em contrapartida, o SVR com Kernel Linear manteve-se totalmente estável, ignorou o ruído das colunas desnecessárias e manteve um erro baixíssimo de cerca de 38 calorias.
+### Análise Comparativa da Evolução (4 Lotes):
+
+* **Lote 1 (A Hipótese Inicial - Tempo + BPM):** Ocorreu um empate técnico. O K-NN e o SVM apresentaram erros na faixa de ~59 calorias. Em cenários de baixa complexidade, o cálculo de distância do K-NN funciona adequadamente.
+* **Lote 2 (A Armadilha Estatística - Tempo + Exp.):** O mapa de calor indicava que a Experiência tinha o dobro de correlação do BPM. Porém, ao testar isso na prática, o erro em ambos os modelos disparou para mais de 100 calorias. Isso ocorreu porque o nível de experiência é uma métrica estática. Sem o Batimento Cardíaco, a IA ficou "cega" em relação à intensidade real do treino *daquele dia*, provando que o poder preditivo combinado exige contexto, e não apenas correlações isoladas.
+* **Lote 3 (Esforço + Físico):** Adicionando as características corporais (Biotipo), o erro geral caiu. O SVM assumiu a liderança definitiva (baixando para ~37 calorias contra 61 do K-NN), pois seu hiperplano se ajustou de forma muito superior às variáveis biológicas.
+* **Lote 4 (A Maldição da Dimensionalidade):** Ao introduzir todas as variáveis simultaneamente, a barra do K-NN colapsou, elevando o erro para ~110 calorias. O modelo baseado em distância quebrou devido à Maldição da Dimensionalidade. Em contrapartida, o SVR com Kernel Linear manteve-se inabalável, ignorou o ruído das colunas desnecessárias e manteve um erro excelente de ~38 calorias.
 
 ---
 
 ## 6. Conclusão
-O projeto comprovou a hipótese inicial sobre a forte influência do ritmo cardíaco e tempo de treino no gasto calórico. Através da experimentação estruturada em lotes, ficou provado que algoritmos baseados em distância (K-NN) falham em bases de dados complexas e com muitas colunas de ruído. A aplicação do método avançado (SVR com Kernel Linear) resolveu esse gargalo com perfeição, demonstrando capacidade de generalização e entregando estimativas calóricas precisas e estáveis em todos os cenários testados.
+
+O projeto culminou em dois grandes aprendizados para a Engenharia de Software e Análise de Dados:
+1. **O Contexto Humano supera a Estatística Isolada:** A experimentação provou que monitorar a intensidade fisiológica real (BPM) entrega resultados infinitamente superiores do que confiar cegamente em características estáticas de alta correlação (Nível de Experiência). 
+2. **Robustez Algorítmica:** Ficou evidente que algoritmos baseados em cálculo de distância (K-NN) falham drasticamente em bases de dados complexas e repletas de ruído. A aplicação do método avançado (SVR com Kernel Linear) resolveu o gargalo da dimensionalidade com perfeição, entregando estimativas calóricas precisas, generalistas e altamente estáveis no cenário mais desafiador.
